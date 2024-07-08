@@ -1,0 +1,32 @@
+.header {
+    background-color: orangered;
+    text-align: center;
+    color: white;
+    height: 60px;
+}
+
+.header p {
+    position: relative;
+    top: 15px;
+}
+
+.button-add img {
+    width: 52px;
+    position: fixed;
+    left: 1%;
+}
+
+.insert {
+    position: fixed;
+    top: 90px;
+    left: 25px;
+}
+
+.get {
+    background-color: red;
+    color: white;
+    width: 110vh;
+    position: fixed;
+    left: 26%;
+    top: 185px;
+}
