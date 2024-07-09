@@ -1,5 +1,5 @@
 .header {
-    background-color: orangered;
+    background-color: rgba(79,0,255,1.00);
     text-align: center;
     color: white;
     height: 60px;
@@ -17,7 +17,7 @@
 }
 
 .insert {
-    position: fixed;
+    position: absolute;
     top: 90px;
     left: 30px;
     width: 86%;
@@ -54,7 +54,7 @@
 
 .table-header {
     display: table-header-group;
-    background-color: orangered;
+    background-color: rgba(79,0,255,1.00);
     color: white;
     border-bottom: 1px solid #ccc;
 }
@@ -79,10 +79,11 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    position: relative;
-    top: 8px;
-    left: 4.5vh;
+    position: absolute;
+    top: -5px;
+    left: 0.5vh;
     width: 40px;
+
 }
 
 .add-button svg {

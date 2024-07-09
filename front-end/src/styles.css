@@ -1,1 +1,17 @@
 @import '~bootstrap/dist/css/bootstrap.css';
+
+::-webkit-scrollbar {
+    width: 10px;
+    
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: white;
+    
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(79,0,255,1.00);
+    border-radius: 20px;
+    
+  }

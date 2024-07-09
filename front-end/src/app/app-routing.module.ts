@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ConsultaProdutoComponent } from './produto/consulta/consulta-produto.component';
-import { CadastroProdutoComponent } from './produto/cadastro/cadastro-produto.component';
+import { ConsultaProdutoComponent } from './features/produto/components/consulta/consulta-produto.component';
+import { CadastroProdutoComponent } from './features/produto/components/cadastro/cadastro-produto.component';
 
 const routes: Routes = [
   { 
