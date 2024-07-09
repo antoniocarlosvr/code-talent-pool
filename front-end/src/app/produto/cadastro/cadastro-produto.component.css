@@ -134,3 +134,55 @@
     width: 35px;
     height: 35px;
 }
+
+.save-icon-modal {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline;
+    position: relative;
+    right: 0.6%;
+    top: 1px;
+}
+
+.save-icon-modal svg {
+    width: 35px;
+    height: 35px;
+}
+
+.title-modal {
+    position: relative;
+    top: 4px;
+    left: 32%;
+}
+
+@media (min-width: 500px) {
+    h4.title-modal {
+        left: 41%;
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 500px) {
+    button.save-icon {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        display: inline;
+        position: relative;
+        right: 36.6%;
+        top: 12px;
+    }
+}
+
+@media (max-width: 500px) {
+    button.delete-button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        display: inline;
+        position: relative;
+        right: 36.6%;
+        top: 12px;
+    }
+}
