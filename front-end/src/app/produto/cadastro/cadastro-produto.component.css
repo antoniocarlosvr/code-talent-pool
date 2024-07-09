@@ -7,7 +7,7 @@
 
 .header p {
     position: relative;
-    top: -25px;
+    bottom: 20px;
 }
 
 .button-add img {
@@ -20,6 +20,7 @@
     position: fixed;
     top: 90px;
     left: 30px;
+    width: 86%;
 }
 
 .get {
@@ -43,7 +44,7 @@
 
 .table {
     display: table;
-    width: 95%;
+    width: 64%;
     position: relative;
     border-collapse: collapse;
     top: 125px;
@@ -80,7 +81,8 @@
     align-items: center;
     position: relative;
     top: 8px;
-    left: 3.5vh;
+    left: 4.5vh;
+    width: 40px;
 }
 
 .add-button svg {
@@ -95,10 +97,40 @@
     cursor: pointer;
     display: inline;
     position: relative;
-    left: 33%;
+    left: 26%;
 }
 
 .icon-button svg {
     width: 25px;
     height: 25px;
+}
+
+.delete-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline;
+    position: relative;
+    right: 44.6%;
+    top: 12px;
+}
+
+.delete-button svg {
+    width: 35px;
+    height: 35px;
+}
+
+.save-icon {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline;
+    position: relative;
+    right: 44.6%;
+    top: 12px;
+}
+
+.save-icon svg {
+    width: 35px;
+    height: 35px;
 }
