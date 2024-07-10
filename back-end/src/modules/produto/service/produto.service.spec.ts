@@ -1,17 +1,25 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ProdutoService } from './produto.service';
-import { Repository } from 'typeorm';
 import { CreateProdutoDto } from '../dto/create-produto.dto';
 import { UpdateProdutoDto } from '../dto/update-produto.dto';
-import { ProdutoController } from '../controller/produto.controller';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ProdutoModule } from '../produto.module';
+import { Produto } from '../entity/produto.entity';
 
 describe('ProdutoService', () => {
   let service: ProdutoService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [ProdutoController],
-      providers: [ProdutoService, Repository],
+      imports: [
+        TypeOrmModule.forRoot({
+          type: 'postgres', // ou outro tipo de banco de dados adequado para testes
+          database: ':memory:',
+          entities: [Produto],
+          synchronize: true,
+        }),
+        ProdutoModule,
+      ],
     }).compile();
 
     service = module.get<ProdutoService>(ProdutoService);
