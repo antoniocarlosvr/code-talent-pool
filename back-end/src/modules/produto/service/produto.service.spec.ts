@@ -1,10 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ProdutoService } from './produto.service';
-import { CreateProdutoDto } from '../dto/create-produto.dto';
-import { UpdateProdutoDto } from '../dto/update-produto.dto';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ProdutoModule } from '../produto.module';
 import { Produto } from '../entity/produto.entity';
+import { ProdutoModule } from '../produto.module';
 
 describe('ProdutoService', () => {
   let service: ProdutoService;
@@ -13,7 +11,7 @@ describe('ProdutoService', () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [
         TypeOrmModule.forRoot({
-          type: 'postgres', // ou outro tipo de banco de dados adequado para testes
+          type: 'sqlite',
           database: ':memory:',
           entities: [Produto],
           synchronize: true,
@@ -30,43 +28,57 @@ describe('ProdutoService', () => {
   });
 
   describe('create', () => {
-    it('should create a new produto', async () => {
-      const createProdutoDto: CreateProdutoDto = {
+    it('cria um novo produto', async () => {
+      const createProdutoDto = {
         id: 1,
         descricao: 'Produto 1',
         custo: 10.99,
+        imagem: Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]),
       };
 
       const produto = await service.create(createProdutoDto);
 
       expect(produto).toBeDefined();
       expect(produto.descricao).toBe(createProdutoDto.descricao);
-      expect(produto.custo).toBe(createProdutoDto.custo);
+      expect(produto.custo).toBe(parseFloat(createProdutoDto.custo.toFixed(2)));
     });
   });
 
   describe('findAll', () => {
-    it('should return an array of produtos', async () => {
+    it('retorna uma lista de produtos', async () => {
       const produtos = await service.findAll();
 
       expect(produtos).toBeInstanceOf(Array);
-      expect(produtos.length).toBeGreaterThan(0);
     });
   });
 
   describe('findId', () => {
-    it('should return a produto by id', async () => {
-      const id = 1;
-      const produto = await service.findId(id);
+    it('retorna o produto pelo id', async () => {
+      const createProdutoDto = {
+        id: 1,
+        descricao: 'Produto 1',
+        custo: 10.99,
+        imagem: Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]),
+      };
+
+      const newProduto = await service.create(createProdutoDto);
+      const produto = await service.findId(newProduto.id);
 
       expect(produto).toBeDefined();
-      expect(produto.id).toBe(id);
+      expect(produto.id).toBe(newProduto.id);
     });
   });
 
   describe('findDescricao', () => {
-    it('should return an array of produtos by descricao', async () => {
+    it('retorna os produtos pela descricao', async () => {
       const descricao = 'Produto 1';
+      await service.create({
+        id: 1,
+        descricao,
+        custo: 10.99,
+        imagem: Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]),
+      });
+
       const produtos = await service.findDescricao(descricao);
 
       expect(produtos).toBeInstanceOf(Array);
@@ -76,43 +88,68 @@ describe('ProdutoService', () => {
   });
 
   describe('findCusto', () => {
-    it('should return an array of produtos by custo', async () => {
+    it('retorna os produtos pelo custo', async () => {
       const custo = 10.99;
+      await service.create({
+        id: 1,
+        descricao: 'Produto 1',
+        custo,
+        imagem: Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]),
+      });
+
       const produtos = await service.findCusto(custo);
 
       expect(produtos).toBeInstanceOf(Array);
       expect(produtos.length).toBeGreaterThan(0);
-      expect(produtos[0].custo).toBe(custo);
+      expect(parseFloat(produtos[0].custo.toFixed(2))).toBe(
+        parseFloat(custo.toFixed(2)),
+      );
     });
   });
 
   describe('update', () => {
-    it('should update a produto', async () => {
-      const id = 1;
-      const updateProdutoDto: UpdateProdutoDto = {
+    it('atualiza o produto', async () => {
+      const createProdutoDto = {
+        id: 1,
+        descricao: 'Produto 1',
+        custo: 10.99,
+        imagem: Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]),
+      };
+      const newProduto = await service.create(createProdutoDto);
+
+      const updateProdutoDto = {
+        id: 1,
         descricao: 'Produto 1 Updated',
         custo: 12.99,
       };
 
-      await service.update(id, updateProdutoDto);
+      await service.update(newProduto.id, updateProdutoDto);
 
-      const produto = await service.findId(id);
+      const produto = await service.findId(newProduto.id);
 
       expect(produto).toBeDefined();
       expect(produto.descricao).toBe(updateProdutoDto.descricao);
-      expect(produto.custo).toBe(updateProdutoDto.custo);
+      expect(parseFloat(produto.custo.toFixed(2))).toBe(
+        parseFloat(updateProdutoDto.custo.toFixed(2)),
+      );
     });
   });
 
   describe('remove', () => {
-    it('should remove a produto', async () => {
-      const id = 1;
+    it('deleta o produto', async () => {
+      const createProdutoDto = {
+        id: 1,
+        descricao: 'Produto 1',
+        custo: 10.99,
+        imagem: Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]),
+      };
+      const newProduto = await service.create(createProdutoDto);
 
-      await service.remove(id);
+      await service.remove(newProduto.id);
 
-      const produto = await service.findId(id);
+      const produto = await service.findId(newProduto.id);
 
-      expect(produto).toBeUndefined();
+      expect(produto).toBeNull();
     });
   });
 });
