@@ -3,7 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProdutoModule } from '../produto/produto.module';
 import { LojaModule } from '../loja/loja.module';
-import { ProdutolojaModule } from '../produtoloja/produtoloja.module';
+import { ProdutoLojaModule } from '../produtoloja/produtoloja.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import databaseConfig from 'src/config/database.config';
@@ -30,7 +30,7 @@ import databaseConfig from 'src/config/database.config';
     }),
     ProdutoModule,
     LojaModule,
-    ProdutolojaModule,
+    ProdutoLojaModule,
   ],
   controllers: [AppController],
   providers: [AppService],

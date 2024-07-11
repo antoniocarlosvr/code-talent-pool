@@ -11,4 +11,4 @@ import { Loja } from '../loja/entity/loja.entity';
   controllers: [ProdutoLojaController],
   providers: [ProdutoLojaService],
 })
-export class ProdutolojaModule {}
+export class ProdutoLojaModule {}
