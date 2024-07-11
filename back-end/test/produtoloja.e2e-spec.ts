@@ -56,6 +56,16 @@ describe('ProdutoLojaController (e2e)', () => {
       });
   });
 
+  it('/produtoloja (GET)', () => {
+    return request(app.getHttpServer())
+      .get('/produtoloja')
+      .send({ id: 1 })
+      .expect(200)
+      .expect((res) => {
+        expect(res.body).toBeInstanceOf(Array);
+      });
+  });
+
   it('/produtoloja/:id (PATCH)', () => {
     return request(app.getHttpServer())
       .patch('/produtoloja/1')

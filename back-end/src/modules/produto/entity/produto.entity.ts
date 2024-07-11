@@ -8,9 +8,12 @@ export class Produto {
   @Column({ type: 'varchar', length: 60, nullable: false })
   descricao: string;
 
-  @Column('decimal', { precision: 13, scale: 2 })
+  @Column('decimal', { precision: 13, scale: 2, nullable: false })
   custo: number;
 
-  @Column({ type: process.env.NODE_ENV === 'test' ? 'blob' : 'bytea' })
+  @Column({
+    type: process.env.NODE_ENV === 'test' ? 'blob' : 'bytea',
+    nullable: true,
+  })
   imagem: Buffer;
 }

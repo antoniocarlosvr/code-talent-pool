@@ -6,13 +6,13 @@ import { LojaModule } from '../loja/loja.module';
 import { ProdutoLojaModule } from '../produtoloja/produtoloja.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import databaseConfig from 'src/config/database.config';
+import DatabaseConfig from 'src/config/database.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [databaseConfig],
+      load: [DatabaseConfig],
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],

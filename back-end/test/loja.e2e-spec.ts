@@ -52,6 +52,26 @@ describe('LojaController (e2e)', () => {
       });
   });
 
+  it('/loja por id (GET)', async () => {
+    return request(app.getHttpServer())
+      .get('/loja')
+      .send({ id: 1 })
+      .expect(200)
+      .expect((res) => {
+        expect(res.body).toBeInstanceOf(Array);
+      });
+  });
+
+  it('/loja por descricao (GET)', async () => {
+    return request(app.getHttpServer())
+      .get('/loja')
+      .send({ descricao: 'Loja 1' })
+      .expect(200)
+      .expect((res) => {
+        expect(res.body).toBeInstanceOf(Array);
+      });
+  });
+
   it('/loja/:id (PATCH)', () => {
     return request(app.getHttpServer())
       .patch('/loja/1')
