@@ -10,5 +10,6 @@ import { Loja } from '../loja/entity/loja.entity';
   imports: [TypeOrmModule.forFeature([ProdutoLoja, Produto, Loja])],
   controllers: [ProdutoLojaController],
   providers: [ProdutoLojaService],
+  exports: [ProdutoLojaService],
 })
 export class ProdutoLojaModule {}

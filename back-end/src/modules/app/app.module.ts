@@ -4,30 +4,17 @@ import { AppService } from './app.service';
 import { ProdutoModule } from '../produto/produto.module';
 import { LojaModule } from '../loja/loja.module';
 import { ProdutoLojaModule } from '../produtoloja/produtoloja.module';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import DatabaseConfig from 'src/config/database.config';
+import { DatabaseConfig } from 'src/config/database.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [DatabaseConfig],
+      envFilePath: ['.env'],
     }),
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
-        type: 'postgres',
-        host: configService.get<string>('DATABASE_HOST'),
-        port: configService.get<number>('DATABASE_PORT'),
-        username: configService.get<string>('DATABASE_USER'),
-        password: configService.get<string>('DATABASE_PASSWORD'),
-        database: configService.get<string>('DATABASE_NAME'),
-        entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-        synchronize: true,
-      }),
-      inject: [ConfigService],
-    }),
+    TypeOrmModule.forRootAsync({ useClass: DatabaseConfig }),
     ProdutoModule,
     LojaModule,
     ProdutoLojaModule,
