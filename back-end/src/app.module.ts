@@ -1,9 +1,7 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { ProdutoModule } from '../produto/produto.module';
-import { LojaModule } from '../loja/loja.module';
-import { ProdutoLojaModule } from '../produtoloja/produtoloja.module';
+import { ProdutoModule } from './modules/produto/produto.module';
+import { LojaModule } from './modules/loja/loja.module';
+import { ProdutoLojaModule } from './modules/produtoloja/produtoloja.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DatabaseConfig } from 'src/config/database.config';
@@ -19,7 +17,7 @@ import { DatabaseConfig } from 'src/config/database.config';
     LojaModule,
     ProdutoLojaModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
