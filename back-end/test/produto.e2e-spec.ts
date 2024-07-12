@@ -38,6 +38,7 @@ describe('ProdutoController (e2e)', () => {
         expect(res.body).toEqual(
           expect.objectContaining({
             descricao: 'Produto 1',
+            custo: 5.0,
           }),
         );
       });
@@ -62,7 +63,7 @@ describe('ProdutoController (e2e)', () => {
       });
   });
 
-  it('/produto por descricao(GET)', async () => {
+  it('/produto por descricao (GET)', async () => {
     return request(app.getHttpServer())
       .get('/produto')
       .send({ descricao: 'Produto 1' })

@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+@Entity('produto')
 export class Produto {
   @PrimaryGeneratedColumn()
   id: number;
@@ -8,7 +8,7 @@ export class Produto {
   @Column({ type: 'varchar', length: 60, nullable: false })
   descricao: string;
 
-  @Column('decimal', { precision: 13, scale: 2, nullable: false })
+  @Column('decimal', { precision: 13, scale: 2, nullable: true })
   custo: number;
 
   @Column({

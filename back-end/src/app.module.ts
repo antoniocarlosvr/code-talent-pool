@@ -2,21 +2,13 @@ import { Module } from '@nestjs/common';
 import { ProdutoModule } from './modules/produto/produto.module';
 import { LojaModule } from './modules/loja/loja.module';
 import { ProdutoLojaModule } from './modules/produtoloja/produtoloja.module';
-import { ConfigModule } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { DatabaseConfig } from 'src/config/database.config';
+// import { ConfigModule } from '@nestjs/config';
+// import { TypeOrmModule } from '@nestjs/typeorm';
+// import { DatabaseConfig } from 'src/config/database.config';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
-  imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-      envFilePath: ['.env'],
-    }),
-    TypeOrmModule.forRootAsync({ useClass: DatabaseConfig }),
-    ProdutoModule,
-    LojaModule,
-    ProdutoLojaModule,
-  ],
+  imports: [DatabaseModule, ProdutoModule, LojaModule, ProdutoLojaModule],
   controllers: [],
   providers: [],
 })
