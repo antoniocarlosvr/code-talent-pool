@@ -1,16 +1,19 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+@Entity('produto')
 export class Produto {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ type: 'varchar', length: 60, nullable: false })
   descricao: string;
 
-  @Column()
+  @Column('decimal', { precision: 13, scale: 2, nullable: true })
   custo: number;
 
-  // @Column()
-  // imagem: string;
+  @Column({
+    type: process.env.NODE_ENV === 'test' ? 'blob' : 'bytea',
+    nullable: true,
+  })
+  imagem: Buffer;
 }
