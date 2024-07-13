@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col">
                 <label for="formGroupExampleInput" class="form-label">Código</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Insira o código">
+                <input type="text" class="form-control" [(ngModel)]="descricaoBusca" (input)="performSearch(id)" id="formGroupExampleInput" placeholder="Insira o código">
             </div>
             <div class="col">
                 <label for="formGroupExampleInput2" class="form-label">Descrição</label>

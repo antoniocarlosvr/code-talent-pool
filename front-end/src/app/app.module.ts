@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CadastroProdutoComponent } from './features/produto/components/cadastro/cadastro-produto.component';
 import { ConsultaProdutoComponent } from './features/produto/components/consulta/consulta-produto.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ConsultaProdutoComponent } from './features/produto/components/consulta
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
