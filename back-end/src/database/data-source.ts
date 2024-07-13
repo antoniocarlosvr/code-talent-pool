@@ -13,6 +13,8 @@ export const dataSourceConfig = new DataSource({
   username: process.env['DATABASE_USER'],
   password: process.env['DATABASE_PASSWORD'],
   database: process.env['DATABASE_NAME'],
-  entities: ['../**/*.entity{.ts,.js}'],
-  migrations: ['./migrations/*{.ts,.js}'],
+  entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+  migrationsRun: true,
+  logging: false,
+  migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
 });
