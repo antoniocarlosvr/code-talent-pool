@@ -1,0 +1,138 @@
+<header>
+    <nav class="header">
+        <button class="save-icon" onclick="alert('Salvar!')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="white">
+                <path d="M17 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7l-4-4z" stroke="white"
+                    stroke-width="2" fill="none" />
+                <polyline points="17 3 17 8 12 8 12 3" stroke="white" stroke-width="2" />
+                <rect x="7" y="14" width="10" height="6" stroke="white" stroke-width="2" fill="none" />
+            </svg>
+        </button>
+
+        <button class="delete-button" onclick="alert('Excluir!')">
+            <svg class="delete-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="white">
+                <rect x="3" y="6" width="18" height="2" stroke="white" stroke-width="2" />
+                <path d="M8 6V4h8v2" stroke="white" stroke-width="2" />
+                <path d="M5 6h14l-1 14H6L5 6z" stroke="white" stroke-width="2" fill="none" />
+                <line x1="10" y1="11" x2="10" y2="17" stroke="white" stroke-width="2" />
+                <line x1="14" y1="11" x2="14" y2="17" stroke="white" stroke-width="2" />
+            </svg>
+        </button>
+        <p>Cadastro de Produto</p>
+    </nav>
+</header>
+
+<main>
+    <div class="insert">
+        <div class="row">
+            <div class="col">
+                <label for="formGroupExampleInput" class="form-label">Código*</label>
+                <input type="text" class="form-control" id="formGroupExampleInput"
+                    placeholder="Insira o código do produto">
+            </div>
+            <div class="col">
+                <label for="formGroupExampleInput2" class="form-label">Descrição*</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2"
+                    placeholder="Insira a descrição do produto">
+            </div>
+            <div class="col">
+                <label for="formGroupExampleInput2" class="form-label">Custo</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2"
+                    placeholder="Insira o custo do produto">
+            </div>
+            <div class="col">
+                <label for="formGroupExampleInput3" class="form-label">Imagem</label>
+                <img src="assets/img/www.harvard.edu.ico" class="form-control" alt="Imagem Produto">
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="table">
+        <div class="table-header">
+            <div class="table-cell">
+                <button class="add-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="white">
+                        <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" fill="none" />
+                        <line x1="12" y1="8" x2="12" y2="16" stroke="white" stroke-width="2" />
+                        <line x1="8" y1="12" x2="16" y2="12" stroke="white" stroke-width="2" />
+                    </svg>
+                </button>
+                Loja
+            </div>
+            <div class="table-cell">Custo (R$)</div>
+        </div>
+
+        <div class="table-row">
+            <div class="table-cell">loja.descricao</div>
+            <div class="table-cell">
+                produtoloja.precovenda
+                <button class="icon-button" onclick="alert('Excluir!')">
+                    <svg class="delete-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="rgba(79,0,255,1.00)">
+                        <rect x="3" y="6" width="18" height="2" stroke="rgba(79,0,255,1.00)" stroke-width="2" />
+                        <path d="M8 6V4h8v2" stroke="rgba(79,0,255,1.00)" stroke-width="2" />
+                        <path d="M5 6h14l-1 14H6L5 6z" stroke="rgba(79,0,255,1.00)" stroke-width="2" fill="none" />
+                        <line x1="10" y1="11" x2="10" y2="17" stroke="rgba(79,0,255,1.00)" stroke-width="2" />
+                        <line x1="14" y1="11" x2="14" y2="17" stroke="rgba(79,0,255,1.00)" stroke-width="2" />
+                    </svg>
+                </button>
+
+                <button class="icon-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <svg class="edit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="rgba(79,0,255,1.00)">
+                        <path d="M12 20h9" stroke="rgba(79,0,255,1.00)" stroke-width="2" />
+                        <path d="M16.5 3.5l4 4L7 21H3v-4L16.5 3.5z" stroke="rgba(79,0,255,1.00)" stroke-width="2" fill="none" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- <div *ngFor="let produto of produtos" class="table-row">
+              <div class="table-cell">Célula 1</div>
+              <div class="table-cell">Célula 2</div>
+              <div class="table-cell">Célula 3</div>
+            </div>
+            <div class="table-row">
+              <div class="table-cell">Célula 4</div>
+              <div class="table-cell">Célula 5</div>
+              <div class="table-cell">Célula 6</div>
+            </div> -->
+    </div>
+</main>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="save-icon-modal" onclick="alert('Salvar!')">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="rgba(79,0,255,1.00)">
+                        <path d="M17 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7l-4-4z" stroke="rgba(79,0,255,1.00)"
+                            stroke-width="2" fill="none" />
+                        <polyline points="17 3 17 8 12 8 12 3" stroke="rgba(79,0,255,1.00)" stroke-width="2" />
+                        <rect x="7" y="14" width="10" height="6" stroke="rgba(79,0,255,1.00)" stroke-width="2" fill="none" />
+                    </svg>
+                </button>
+                <h4 class="title-modal">Alteração/Inclusão de Preço</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col">
+                        <label for="formGroupExampleInput" class="form-label">Loja*</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option>Selecione a loja</option>
+                            <!-- <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option> -->
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="formGroupExampleInput2" class="form-label">Preço de Venda (R$)*</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2"
+                            placeholder="Insira o preço de venda">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
