@@ -10,12 +10,12 @@ services:
       - "3000:3000"
     depends_on:
       - db
-    environment:
-      - POSTGRES_HOST=db
-      - POSTGRES_PORT=5432
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=root
-      - POSTGRES_DB=db
+    # environment:
+    #   - POSTGRES_HOST=postgres
+    #   - POSTGRES_PORT=5432
+    #   - POSTGRES_USER=admin
+    #   - POSTGRES_PASSWORD=root
+    #   - POSTGRES_DB=db
 
   db:
     image: postgres:12
