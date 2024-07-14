@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 import { ProdutoService } from '../service/produto.service';
 import { CreateProdutoDto } from '../dto/create-produto.dto';
@@ -25,18 +26,18 @@ export class ProdutoController {
     return this.produtoService.findAll();
   }
 
-  @Get()
-  findOneById(@Body() id: number) {
+  @Get('search/id')
+  findOneById(@Query('id') id: number) {
     return this.produtoService.findId(id);
   }
 
-  @Get()
-  findOneByDescricao(@Body() descricao: string) {
+  @Get('search/descricao')
+  findOneByDescricao(@Query('descricao') descricao: string) {
     return this.produtoService.findDescricao(descricao);
   }
 
-  @Get()
-  findOneByCusto(@Body() custo: number) {
+  @Get('search/custo')
+  findOneByCusto(@Query('custo') custo: number) {
     return this.produtoService.findCusto(custo);
   }
 

@@ -3,13 +3,13 @@ import { Produto } from '../entity/produto.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateProdutoDto } from '../dto/create-produto.dto';
 import { UpdateProdutoDto } from '../dto/update-produto.dto';
-import { ProdutoRepository } from '../repositoty/produto.repository';
+import { Like, Repository } from 'typeorm';
 
 @Injectable()
 export class ProdutoService {
   constructor(
-    @InjectRepository(ProdutoRepository)
-    private produtoRepository: ProdutoRepository,
+    @InjectRepository(Produto)
+    private produtoRepository: Repository<Produto>,
   ) {}
 
   create(createProdutoDto: CreateProdutoDto): Promise<Produto> {
@@ -25,8 +25,10 @@ export class ProdutoService {
     return this.produtoRepository.findOne({ where: { id } });
   }
 
-  findDescricao(descricao: string): Promise<Produto[]> {
-    return this.produtoRepository.find({ where: { descricao } });
+  findDescricao(descricaoBusca: string): Promise<Produto[]> {
+    return this.produtoRepository.find({
+      where: { descricao: Like(`%${descricaoBusca}%`) },
+    });
   }
 
   findCusto(custo: number): Promise<Produto[]> {
