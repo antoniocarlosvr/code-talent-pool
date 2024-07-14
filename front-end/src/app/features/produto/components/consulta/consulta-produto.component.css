@@ -1,0 +1,105 @@
+.header {
+    background-color: rgba(79,0,255,1.00);
+    text-align: center;
+    color: white;
+    height: 60px;
+}
+
+.header p {
+    position: relative;
+    top: -25px;
+}
+
+.button-add img {
+    width: 52px;
+    position: fixed;
+    left: 1%;
+}
+
+.insert {
+    position: absolute;
+    top: 90px;
+    left: 30px;
+}
+
+.get {
+    /*background-color: red;
+    color: white;*/
+    width: 96%;
+    position: fixed;
+    left: 2%;
+    top: 185px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.get .col {
+    background-color: red;
+    position: relative;
+    left: 43px;
+    margin-left: -86px;
+}
+
+.table {
+    display: table;
+    width: 95%;
+    position: relative;
+    border-collapse: collapse;
+    top: 125px;
+    left: 30px;
+    text-align: center;
+}
+
+.table-header {
+    display: table-header-group;
+    background-color: rgba(79,0,255,1.00);
+    color: white;
+    border-bottom: 1px solid #ccc;
+}
+
+.table-row {
+    display: table-row;
+}
+
+.table-cell {
+    display: table-cell;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.table-header .table-cell {
+    font-weight: bold;
+}
+
+.add-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 8px;
+    left: 4.5vh;
+    width: 40px;
+}
+
+.add-button svg {
+    width: 40px;
+    height: 40px;
+    fill: white;
+}
+
+.icon-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline;
+    position: relative;
+    left: 33%;
+}
+
+.icon-button svg {
+    width: 25px;
+    height: 25px;
+}
