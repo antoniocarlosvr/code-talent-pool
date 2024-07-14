@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Produto } from '../../model/produto.model';
 import { ProdutoService } from '../../services/produto.service';
+import { FormControl } from '@angular/forms';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-consulta',
@@ -9,15 +11,26 @@ import { ProdutoService } from '../../services/produto.service';
 })
 export class ConsultaProdutoComponent implements OnInit {
 
+  fromControl: FormControl = new FormControl('');
   public produtos: Produto[] = []; // Inicializa como um array vazio
-  public id: number = 0;
+  public id: string = '';
   public descricao: string = '';
   public custo: number = 0;
 
   constructor(private _produtoService: ProdutoService) {}
 
   ngOnInit(): void {
-    this.loadProdutos();
+    this.fromControl.valueChanges.pipe(
+      //debounceTime(900),
+      distinctUntilChanged(),
+      switchMap(
+        value => value ? this._produtoService.getProdutoByDescricao(value) : this._produtoService.getProdutos()
+
+      )
+    ).subscribe(result => {
+      this.produtos = result;
+    });
+    //this.loadProdutos();
   }
 
   loadProdutos(): void {
@@ -28,7 +41,7 @@ export class ConsultaProdutoComponent implements OnInit {
   }
 
   findCodigo(): void {
-    if (this.id !== null) {
+    if (this.id !== '') {
       this._produtoService.getProdutoById(this.id).subscribe((retorno) => {
         this.produtos = retorno ? [retorno] : []; // Aqui também, retorno deve ser um array de Produto
         console.log(this.produtos);

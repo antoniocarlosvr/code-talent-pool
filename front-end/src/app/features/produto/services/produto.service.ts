@@ -15,7 +15,7 @@ export class ProdutoService {
     return this.http.get<Produto[]>(this.url);
   }
 
-  getProdutoById(id: number): Observable<Produto> {
+  getProdutoById(id: string): Observable<Produto> {
     return this.http.get<Produto>(`${this.url}/search/id?id=${id}`);
   }
 

@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 import { LojaService } from '../service/loja.service';
 import { CreateLojaDto } from '../dto/create-loja.dto';
@@ -25,13 +26,13 @@ export class LojaController {
     return this.lojaService.findAll();
   }
 
-  @Get()
-  findById(@Body() id: number) {
+  @Get('search/id')
+  findById(@Query('id') id: number) {
     return this.lojaService.findId(id);
   }
 
-  @Get()
-  findByDescricao(@Body() descricao: string) {
+  @Get('search/descricao')
+  findByDescricao(@Query('descricao') descricao: string) {
     return this.lojaService.findDescricao(descricao);
   }
 

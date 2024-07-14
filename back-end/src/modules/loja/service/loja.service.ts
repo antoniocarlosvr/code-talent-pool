@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Loja } from '../entity/loja.entity';
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 import { CreateLojaDto } from '../dto/create-loja.dto';
 import { UpdateLojaDto } from '../dto/update-loja.dto';
 
@@ -25,8 +25,10 @@ export class LojaService {
     return this.lojaRepository.findOne({ where: { id } });
   }
 
-  findDescricao(descricao: string): Promise<Loja[]> {
-    return this.lojaRepository.find({ where: { descricao } });
+  findDescricao(descricaoBusca: string): Promise<Loja[]> {
+    return this.lojaRepository.find({
+      where: { descricao: Like(`%${descricaoBusca}%`) },
+    });
   }
 
   update(id: number, data: UpdateLojaDto) {

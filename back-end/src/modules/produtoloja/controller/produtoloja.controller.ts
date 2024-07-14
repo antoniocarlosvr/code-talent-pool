@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 import { CreateProdutoLojaDto } from '../dto/create-produtoloja.dto';
 import { ProdutoLojaService } from '../service/produtoloja.service';
@@ -25,8 +26,8 @@ export class ProdutoLojaController {
     return this.produtoLojaService.findAll();
   }
 
-  @Get()
-  findOneById(@Body() id: number) {
+  @Get('search/id')
+  findOneById(@Query('id') id: number) {
     return this.produtoLojaService.findId(id);
   }
 

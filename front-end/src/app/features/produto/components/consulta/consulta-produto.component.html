@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col">
                 <label for="formGroupExampleInput" class="form-label">Código</label>
-                <input type="text" class="form-control" [(ngModel)]="id" (input)="findCodigo()" id="formGroupExampleInput" placeholder="Insira o código">
+                <input type="text" class="form-control" [formControl]="fromControl" [(ngModel)]="id" (input)="findCodigo()" id="formGroupExampleInput" placeholder="Insira o código">
             </div>
             <div class="col">
                 <label for="formGroupExampleInput2" class="form-label">Descrição</label>
@@ -24,7 +24,7 @@
             </div>
             <div class="col">
                 <label for="formGroupExampleInput2" class="form-label">Custo</label>
-                <input type="text" class="form-control" [(ngModel)]="custo" (input)="findCusto()" id="formGroupExampleInput2" placeholder="Insira o custo">
+                <input type="text" class="form-control" [formControl]="fromControl" [(ngModel)]="custo" (input)="findCusto()" id="formGroupExampleInput2" placeholder="Insira o custo">
             </div>
             <div class="col">
                 <label for="formGroupExampleInput2" class="form-label">Preço de Venda</label>
