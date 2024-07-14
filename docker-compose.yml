@@ -1,6 +1,16 @@
 version: '3'
 
 services:
+  web:
+    build:
+      context: ./front-end
+      dockerfile: .docker/Dockerfile
+    container_name: angular
+    ports:
+      - "4200:80"
+    depends_on:
+      - api
+
   api:
     build:
       context: ./back-end
@@ -15,7 +25,7 @@ services:
       - POSTGRES_PORT=5432
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=root
-      - POSTGRES_DB=db
+      - POSTGRES_DB=codetalentpooldb
 
   db:
     image: postgres:12
@@ -23,11 +33,12 @@ services:
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: root
-      POSTGRES_DB: db
+      POSTGRES_DB: postgres
     ports:
       - "2345:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
 
 volumes:
   pgdata:

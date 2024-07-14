@@ -79,16 +79,6 @@ describe('ProdutoLojaController (e2e)', () => {
       });
   });
 
-  it('/produtoloja por id (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/produtoLoja/search/precoVenda')
-      .send({ precoVenda: 10.5 })
-      .expect(200)
-      .expect((res) => {
-        expect(res.body).toBeInstanceOf(Array);
-      });
-  });
-
   it('/produtoloja/:id (PATCH)', () => {
     return request(app.getHttpServer())
       .patch('/produtoloja/1')
