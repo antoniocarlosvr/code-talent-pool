@@ -15,12 +15,16 @@ export class ProdutoService {
     return this.http.get<Produto[]>(this.url);
   }
 
-  getProdutoById(): Observable<Produto[]> {
-    return this.http.get<Produto[]>(this.url);
+  getProdutoById(id: number): Observable<Produto> {
+    return this.http.get<Produto>(`${this.url}/search/id?id=${id}`);
   }
 
-  getProdutoByDescricao(descricaoBusca: string): Observable<Produto[]> {
-    return this.http.get<Produto[]>(this.url);
+  getProdutoByDescricao(descricao: string): Observable<Produto[]> {
+    return this.http.get<Produto[]>(`${this.url}/search/descricao?descricao=${descricao}`);
+  }
+
+  getProdutoByCusto(custo: number): Observable<Produto[]> {
+    return this.http.get<Produto[]>(`${this.url}/search/custo?custo=${custo}`);
   }
 
   createProduto(produto: Produto): Observable<Produto> {

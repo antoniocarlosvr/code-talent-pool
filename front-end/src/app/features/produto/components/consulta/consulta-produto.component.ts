@@ -8,17 +8,11 @@ import { ProdutoService } from '../../services/produto.service';
   styleUrls: ['./consulta-produto.component.css'],
 })
 export class ConsultaProdutoComponent implements OnInit {
+
   public produtos: Produto[] = []; // Inicializa como um array vazio
-
-  produto: Produto = {
-    id: 0,
-    descricao: '',
-    custo: 0,
-    imagem: new Uint8Array()
-  }
-
-  public descricaoBusca: string = '';
   public id: number = 0;
+  public descricao: string = '';
+  public custo: number = 0;
 
   constructor(private _produtoService: ProdutoService) {}
 
@@ -27,20 +21,44 @@ export class ConsultaProdutoComponent implements OnInit {
   }
 
   loadProdutos(): void {
-    this._produtoService.getProdutos().subscribe((retorno) => {
+    this._produtoService.getProdutos().subscribe((retorno: Produto[]) => {
       this.produtos = retorno; // Aqui, retorno deve ser um array de Produto
       console.log(this.produtos);
     });
   }
 
-  performSearch(id: number): void {
-    if (this.descricaoBusca.trim() !== '') {
-      this._produtoService.getProdutoById().subscribe((retorno) => {
+  findCodigo(): void {
+    if (this.id !== null) {
+      this._produtoService.getProdutoById(this.id).subscribe((retorno) => {
+        this.produtos = retorno ? [retorno] : []; // Aqui também, retorno deve ser um array de Produto
+        console.log(this.produtos);
+      });
+    } else if(this.id == null) {
+      this.loadProdutos(); // Se o campo de busca estiver vazio, carrega todos os produtos novamente
+    } else {
+      this.loadProdutos(); // Se o campo de busca estiver vazio, carrega todos os produtos novamente
+    }
+  }
+
+  findDescricao(): void {
+    if (this.descricao.trim() !== '') {
+      this._produtoService.getProdutoByDescricao(this.descricao).subscribe((retorno: Produto[]) => {
         this.produtos = retorno; // Aqui também, retorno deve ser um array de Produto
-        console.log(this.produtos.toString + "NOME ID AQUI");
+        console.log(this.produtos);
       });
     } else {
-      this.loadProdutos();
+      this.loadProdutos(); // Se o campo de busca estiver vazio, carrega todos os produtos novamente
+    }
+  }
+
+  findCusto(): void {
+    if (this.custo !== 0) {
+      this._produtoService.getProdutoByCusto(this.custo).subscribe((retorno) => {
+        this.produtos = retorno; // Aqui também, retorno deve ser um array de Produto
+        console.log(this.produtos);
+      });
+    } else {
+      this.loadProdutos(); // Se o campo de busca estiver vazio, carrega todos os produtos novamente
     }
   }
 }

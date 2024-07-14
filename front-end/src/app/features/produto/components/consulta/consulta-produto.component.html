@@ -16,15 +16,15 @@
         <div class="row">
             <div class="col">
                 <label for="formGroupExampleInput" class="form-label">Código</label>
-                <input type="text" class="form-control" [(ngModel)]="descricaoBusca" (input)="performSearch(id)" id="formGroupExampleInput" placeholder="Insira o código">
+                <input type="text" class="form-control" [(ngModel)]="id" (input)="findCodigo()" id="formGroupExampleInput" placeholder="Insira o código">
             </div>
             <div class="col">
                 <label for="formGroupExampleInput2" class="form-label">Descrição</label>
-                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Insira a descrição">
+                <input type="text" class="form-control" [(ngModel)]="descricao" (input)="findDescricao()" id="formGroupExampleInput2" placeholder="Insira a descrição">
             </div>
             <div class="col">
                 <label for="formGroupExampleInput2" class="form-label">Custo</label>
-                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Insira o custo">
+                <input type="text" class="form-control" [(ngModel)]="custo" (input)="findCusto()" id="formGroupExampleInput2" placeholder="Insira o custo">
             </div>
             <div class="col">
                 <label for="formGroupExampleInput2" class="form-label">Preço de Venda</label>
@@ -63,17 +63,5 @@
                 </button>
             </div>
         </div>
-
-        <!-- <div *ngFor="let produto of produtos" class="table-row">
-          <div class="table-cell">Célula 1</div>
-          <div class="table-cell">Célula 2</div>
-          <div class="table-cell">Célula 3</div>
-        </div>
-        <div class="table-row">
-          <div class="table-cell">Célula 4</div>
-          <div class="table-cell">Célula 5</div>
-          <div class="table-cell">Célula 6</div>
-        </div> -->
-      </div>
+    </div>
 </main>
-
