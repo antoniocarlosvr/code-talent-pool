@@ -54,17 +54,17 @@ describe('LojaController (e2e)', () => {
 
   it('/loja por id (GET)', async () => {
     return request(app.getHttpServer())
-      .get('/loja')
+      .get('/loja/search/id')
       .send({ id: 1 })
       .expect(200)
       .expect((res) => {
-        expect(res.body).toBeInstanceOf(Array);
+        expect(res.body).toBeInstanceOf(Object);
       });
   });
 
   it('/loja por descricao (GET)', async () => {
     return request(app.getHttpServer())
-      .get('/loja')
+      .get('/loja/search/descricao')
       .send({ descricao: 'Loja 1' })
       .expect(200)
       .expect((res) => {

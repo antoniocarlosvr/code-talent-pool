@@ -71,8 +71,18 @@ describe('ProdutoLojaController (e2e)', () => {
 
   it('/produtoloja por id (GET)', () => {
     return request(app.getHttpServer())
-      .get('/produtoloja')
+      .get('/produtoLoja/search/id')
       .send({ id: 1 })
+      .expect(200)
+      .expect((res) => {
+        expect(res.body).toBeInstanceOf(Object);
+      });
+  });
+
+  it('/produtoloja por id (GET)', () => {
+    return request(app.getHttpServer())
+      .get('/produtoLoja/search/precoVenda')
+      .send({ precoVenda: 10.5 })
       .expect(200)
       .expect((res) => {
         expect(res.body).toBeInstanceOf(Array);

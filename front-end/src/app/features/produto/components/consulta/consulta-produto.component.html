@@ -28,7 +28,7 @@
             </div>
             <div class="col">
                 <label for="formGroupExampleInput2" class="form-label">Preço de Venda</label>
-                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Insira o preço de venda">
+                <input type="text" class="form-control" [formControl]="fromControl" [(ngModel)]="precoVenda" (input)="findPrecoVenda()" id="formGroupExampleInput2" placeholder="Insira o preço de venda">
             </div>
         </div>
     </div>
@@ -55,7 +55,7 @@
                     </svg>
                 </button>
         
-                <button class="icon-button" onclick="alert('Editar!')">
+                <button class="icon-button" routerLink="/produto/cadastro">
                     <svg class="edit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="rgba(79,0,255,1.00)">
                         <path d="M12 20h9" stroke="rgba(79,0,255,1.00)" stroke-width="2"/>
                         <path d="M16.5 3.5l4 4L7 21H3v-4L16.5 3.5z" stroke="rgba(79,0,255,1.00)" stroke-width="2" fill="none"/>

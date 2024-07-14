@@ -48,7 +48,7 @@ describe('ProdutoLojaService', () => {
   });
 
   describe('create', () => {
-    it('should create a new ProdutoLoja', async () => {
+    it('cria um novo produto loja', async () => {
       const createProdutoLojaDto: CreateProdutoLojaDto = {
         id: 1,
         idProduto: 1,
@@ -78,7 +78,7 @@ describe('ProdutoLojaService', () => {
   });
 
   describe('findAll', () => {
-    it('should return an array of ProdutoLoja', async () => {
+    it('retorna todos os dados de produto loja', async () => {
       const produtoLoja = new ProdutoLoja();
       jest
         .spyOn(produtoLojaRepository, 'find')
@@ -94,7 +94,7 @@ describe('ProdutoLojaService', () => {
   });
 
   describe('findId', () => {
-    it('should return a single ProdutoLoja by id', async () => {
+    it('Retorna o produto loja com base no id', async () => {
       const id = 1;
       const produtoLoja = new ProdutoLoja();
       jest
@@ -112,7 +112,7 @@ describe('ProdutoLojaService', () => {
   });
 
   describe('update', () => {
-    it('should update a ProdutoLoja', async () => {
+    it('atualiza o produto loja', async () => {
       const id = 1;
       const updateProdutoLojaDto: UpdateProdutoLojaDto = {
         idProduto: 2,
@@ -139,7 +139,7 @@ describe('ProdutoLojaService', () => {
   });
 
   describe('remove', () => {
-    it('should remove a ProdutoLoja', async () => {
+    it('deleta um produto loja', async () => {
       const id = 1;
       jest
         .spyOn(produtoLojaRepository, 'delete')

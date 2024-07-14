@@ -55,17 +55,17 @@ describe('ProdutoController (e2e)', () => {
 
   it('/produto por id (GET)', async () => {
     return request(app.getHttpServer())
-      .get('/produto')
+      .get('/produto/search/id')
       .send({ id: 1 })
       .expect(200)
       .expect((res) => {
-        expect(res.body).toBeInstanceOf(Array);
+        expect(res.body).toBeInstanceOf(Object);
       });
   });
 
   it('/produto por descricao (GET)', async () => {
     return request(app.getHttpServer())
-      .get('/produto')
+      .get('/produto/search/descricao')
       .send({ descricao: 'Produto 1' })
       .expect(200)
       .expect((res) => {
@@ -75,7 +75,7 @@ describe('ProdutoController (e2e)', () => {
 
   it('/produto por custo (GET)', async () => {
     return request(app.getHttpServer())
-      .get('/produto')
+      .get('/produto/search/custo')
       .send({ custo: 5.0 })
       .expect(200)
       .expect((res) => {

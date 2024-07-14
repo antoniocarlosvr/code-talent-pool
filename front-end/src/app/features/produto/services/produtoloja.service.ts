@@ -23,6 +23,10 @@ export class ProdutoLojaService {
     return this.http.get<ProdutoLoja>(`${this.url}/search/id?id=${id}`);
   }
 
+  getProdutoLojaByPrecoVenda(precoVenda: string): Observable<ProdutoLoja[]> {
+    return this.http.get<ProdutoLoja[]>(`${this.url}/search/precoVenda?precoVenda=${precoVenda}`);
+  }
+
   updateProdutoLoja(id: number, produtoLoja: ProdutoLoja): Observable<ProdutoLoja> {
     return this.http.put<ProdutoLoja>(`${this.url}/${id}`, produtoLoja);
   }

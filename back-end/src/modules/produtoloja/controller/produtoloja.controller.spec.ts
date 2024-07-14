@@ -3,6 +3,8 @@ import { ProdutoLojaController } from './produtoloja.controller';
 import { ProdutoLojaService } from '../service/produtoloja.service';
 import { CreateProdutoLojaDto } from '../dto/create-produtoloja.dto';
 import { UpdateProdutoLojaDto } from '../dto/update-produtoloja.dto';
+// import { Produto } from 'src/modules/produto/entity/produto.entity';
+// import { Loja } from 'src/modules/loja/entity/loja.entity';
 
 describe('ProdutoLojaController', () => {
   let controller: ProdutoLojaController;
