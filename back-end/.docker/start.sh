@@ -1,5 +1,8 @@
 #!/bin/sh
 
+echo "Instalando node e npm."
+npm install
+
 echo "Iniciando testes e2e."
 npm run test:e2e
 
