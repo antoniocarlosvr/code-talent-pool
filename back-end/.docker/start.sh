@@ -1,7 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
-echo "Instalando node e npm."
-npm install
+echo "Instalando dependências do npm."
+npm install --legacy-peer-deps
 
 echo "Iniciando testes e2e."
 npm run test:e2e
@@ -10,4 +10,4 @@ echo "Iniciando coverage."
 npm run test:cov
 
 echo "Iniciando projeto Nest."
-npm run start:prod
+npm run start:dev

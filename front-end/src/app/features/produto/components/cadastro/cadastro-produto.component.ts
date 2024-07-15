@@ -16,7 +16,7 @@ import { ProdutoLojaService } from '../../services/produtoloja.service';
 export class CadastroProdutoComponent {
   // produto: Produto = new Produto(0, '', 0, new Uint8Array());
 
-  // constructor(private produtoService: ProdutoService) {}
+  constructor(private produtoService: ProdutoService, private service: ProdutoLojaService) {}
 
   // cadastrarProduto(): void {
   //   this.produtoService.createProduto(this.produto).subscribe((response) => {
@@ -44,7 +44,27 @@ export class CadastroProdutoComponent {
   public descricao: string = '';
   public precoVenda: number = 0;
 
-  constructor(private service: ProdutoLojaService) {}
+  public produtos: Produto[] = [];
+  produto: Produto = {
+    id: 0,
+    descricao: "",
+    custo: 0,
+    imagem: new Uint8Array
+  }
+
+  add() {
+    console.log(this.produto)
+    this.produtoService.createProduto(this.produto).subscribe(
+      () => { this.produto = new Produto(0, "", 0, new Uint8Array) },
+      () => { console.log("ERRO = Cadastro inválido!") }
+    )
+
+    //this.produtoloja.produto = this.produto.id;
+
+    window.location.href = "/produto";
+  }
+
+  //constructor(private service: ProdutoLojaService) {}
 
   ngOnInit(): void {
     // this.fromControl.valueChanges.pipe(
